@@ -3,15 +3,16 @@ import os
 import time
 import cmath
 
+# for vectors in 3D space
 class Vec3:
     def __init__(self, x, y, z):
         self.x = x
         self.y = y
         self.z = z
-
+        
         v = (x, y, z)
 
-    def __str__(self):
+    def __str__(self): # logging the vector into the terminal
         return f"({self.x}, {self.y}, {self.z})"
 
     def __add__(self, other):
@@ -26,6 +27,7 @@ class Vec3:
             return self.x * other.x + self.y * other.y + self.z * other.z
         raise TypeError("[ERROR] type mismatch: not a Vec3 argument")
 
+# for vectors in 2D space
 class Vec2:
     def __init__(self, x, y):
         self.x = x
@@ -48,20 +50,21 @@ class Vec2:
             return self.x * other.x + self.y * other.y
         raise TypeError("[ERROR] type mismatch: not a Vec3 argument")
 
+# Matrices
 class Matrix:
     def __init__(self, row, col):
         self.row = row
         self.col = col
-        self.data = [[0 for _ in range(col)] for _ in range(row)]
+        self.data = [[0 for _ in range(col)] for _ in range(row)]          # init the matrix
 
         for n in range(min(row, col)):
-            self.data[n][n] = 1
+            self.data[n][n] = 1                                            # form an identity matrix
 
-    def mprint(self):
+    def mprint(self):                                                      # logs the matrix into the terminal 
         for row in self.data:
             print(' '.join(map(str, row)))
 
-    def transpose(self):
+    def transpose(self):                                                   # compute transpose of matrix
         transposed_data = [[self.data[j][i] for j in range(self.row)] for i in range(self.col)]
         transposed = Matrix(self.col, self.row)
         transposed.data = transposed_data
