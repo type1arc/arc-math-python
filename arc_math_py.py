@@ -71,51 +71,40 @@ class Matrix:
 
         return transposed
 
-IOTA = cmath.sqrt(-1)
+IOTA = cmath.sqrt(-1)                                                       # i = sqrt(-1)
 class complex_number:
     def __init__(self, real, imaginary):
         self.real = real
         self.imaginary = imaginary
-        self.val = real + IOTA * imaginary
+        self.val = real + IOTA * imaginary                                  # z = Re z + Im Z
+                                                                            # or z = a + ib
 
-    def cprint(self):
+    def cprint(self):                                                       # logs into the terminal
         print( f"({self.real}, {self.imaginary} i)")
 
-    def abs(self) -> float:
+    def abs(self) -> float:                                                 # absolute value of complex number
         return sqrt(self.real ** 2 + self.imaginary ** 2)
 
-    def conjugate(self):
+    def conjugate(self):                                                    # compute the conjugate of complex number
         self.imaginary *= -1;
         return complex_number(self.real, self.imaginary)
 
-    def add(self, other):
+    def add(self, other):                                                   
         return complex_number(self.real + other.real, self.imaginary + other.imaginary)
 
     def substract(self, other):
         return complex_number(self.real - other.real, self.imaginary - other.imaginary)
 
-def clear():
-    os.system("cls")
-pass
-
-def draw():
-    for y in range(100):
-        for x in range(100):
-            text = "x" if x == y else "#"
-            print(text, end="")
-        print()
-
-
-def main() -> None:
+def main() -> None:                                                        # ENTRY POINT
     print("[ENTRY POINT]")
 
-    mat = Matrix(3, 3)
+    mat = Matrix(3, 3)                                                     # Matrix use case example
     mat.mprint()
     print(" ")
     mat.transpose()
     mat.mprint()
 
-    val = complex_number(1, 1)
+    val = complex_number(1, 1)                                            # complex number use case example
     val.cprint()
     val.conjugate()
     val.cprint()
